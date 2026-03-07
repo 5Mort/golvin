@@ -1,0 +1,7 @@
+﻿l_russian:
+ influence_french_subject_tt: "Выбранного #L [GetCountry('FRA').GetAdjective|l]ого#! ленника можно убедить не вступать в оборонительные войны в течение следующих #Y 5#! лет в обмен на #Y 100#![gold_i]"
+ fur_maintenance: "Меховое"
+ fur_workshop_maintenance: "Меховое"
+ fur_manufactory_maintenance: "Меховое"
+ fur_mill_maintenance: "Меховое"
+ 

@@ -1,0 +1,17 @@
+﻿###HARDCODED###
+TRY_REPLACE:war_breaking_truce = {
+	stability = 170
+	war_exhaustion = 15
+}
+
+
+TRY_REPLACE:war_no_cb = {
+	stability = 50
+	war_exhaustion = 10
+	karma = 20
+	righteousness = 20
+}
+
+TRY_REPLACE:hire_mercenary_premium = {
+	gold = 1
+}

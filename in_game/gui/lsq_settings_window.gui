@@ -1,0 +1,336 @@
+basic_dialog = {
+	name = "lsq_settings_window"
+	widgetid = lsq_settings_window
+	layer = confirmation
+	visible = "[And(GetPlayer.Exists, GetScriptedGui('lsq_show_settings_window').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+	parentanchor = center
+
+	blockoverride "header_obj" {
+		widget = {
+			layoutpolicy_horizontal = expanding
+			size = { -1 40 }
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				margin = { 45 10 }
+				spacing = 8
+				expand = {}
+				textbox = {
+					layoutpolicy_horizontal = fixed
+					autoresize = yes
+					using = text_multi_template
+					using = Font_Size_Big
+					default_format = "#yellow_titles"
+					fontsize = 22
+					fontsize_min = 15
+					align = center|nobaseline
+					block "header_text" {
+						raw_text = "LSQ: Settings"
+					}
+				}
+				expand = {}
+			}
+			button_close_alt = {
+				ignore_layout = yes
+				parentanchor = right|vcenter
+				position = { -45 0 }
+				blockoverride "close_properties" {}
+				size = { 27 27 }
+				blockoverride "close_onclick" {
+					onclick = "[GetScriptedGui('lsq_hide_settings_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+			}
+		}
+	}
+
+	blockoverride "content" {
+		vbox = {
+			margin = { 20 20 }
+			spacing = 10
+
+			# vbox = {
+			# 	button_default = {
+			# 		size = { 20 20 }
+			# 		text_single = {
+			# 			parentanchor = center
+			# 			raw_text = "click"
+			# 		}
+			# 		onclick = "[PdxGuiTriggerAllAnimations('lsq_settings_window_buildings_init_state')]"
+			# 	}
+			# 	layoutpolicy_vertical = expanding
+			# 	spacing = 10
+			# 	datamodel = "[GetPlayer.MakeScope.GetList('every_building_type_list')]"
+			# 	item = {
+			# 		hbox = {
+			# 			datacontext = "[Scope.GetBuildingType]"
+			# 			layoutpolicy_horizontal = expanding
+			# 			spacing = 3
+			# 			text_single = {
+			# 				raw_text = "[BuildingType.GetNameWithNoTooltip]"
+			# 			}
+			# 			expand = {}
+			# 			text_single = {
+			# 				raw_text = "[Select_CString(GetScriptedGui('lsq_is_building_type_producing').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('building_type', BuildingType.MakeScope).End), 'Yes', 'No')]"
+			# 			}
+			# 			text_single = {
+			# 				raw_text = "[Select_CString(GetScriptedGui('lsq_is_building_type_multiple_levels').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('building_type', BuildingType.MakeScope).End), 'Yes', 'No')]"
+			# 			}
+			# 			text_single = {
+			# 				raw_text = "[Select_CString(GetScriptedGui('lsq_is_building_type_one_per_location').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('building_type', BuildingType.MakeScope).End), 'Yes', 'No')]"
+			# 			}
+			# 			text_single = {
+			# 				raw_text = "[Select_CString(GetScriptedGui('lsq_is_building_type_more_than_one').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('building_type', BuildingType.MakeScope).End), '#G Yes #!', '#R No #!')]"
+			# 			}
+			# 		}
+			# 	}
+			# }
+
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				spacing = 3
+				button_checkbox = {
+					size = { 20 20 }
+					checked = "[GetScriptedGui('lsq_pause_auto_expand').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					onclick = "[GetScriptedGui('lsq_pause_auto_expand').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { raw_text = "If checked, auto-expand will not run anywhere. Use when you don't want auto-expand running but you don't want to have to disable and re-enable it." } } }
+				}
+				text_single = {
+					raw_text = "Pause auto-expand everywhere"
+				}
+				expand = {}
+			}
+
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				spacing = 3
+				button_checkbox = {
+					size = { 20 20 }
+					checked = "[GetScriptedGui('lsq_should_auto_expand_upgrade_buildings').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					onclick = "[GetScriptedGui('lsq_should_auto_expand_upgrade_buildings').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { raw_text = "If checked, auto-expand will upgrade buildings if they are obsolete." } } }
+				}
+				text_single = {
+					raw_text = "Auto-expand will upgrade buildings if they are obsolete"
+				}
+				expand = {}
+			}
+
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				spacing = 5
+				tooltipwidget = {
+					ContextualTooltipType = {
+						blockoverride "title_text" {
+							raw_text = "Gold to save before auto-expanding buildings"
+						}
+						blockoverride "tooltip_content" {
+							TooltipTextBlock = {
+								blockoverride "text" {
+									raw_text = "The gold to save is the amount of gold that must be available before any auto-expansion can occur. A building will not auto-expand if the gold to save plus the estimate cost of the next level is greater than the country's current ducats. Put another way, the amount of gold you will have will never drop below the gold to save value."
+								}
+							}
+						}
+					}
+				}
+				expand = {}
+				text_single = {
+					autoresize = yes
+					raw_text = "Gold to save before auto-expanding buildings:"
+				}
+				button_default = {
+					size = { 24 24 }
+					text_single = {
+						parentanchor = center
+						raw_text = "-"
+					}
+					tooltipwidget = { BasicFunctionalTooltip = {} }
+					action_tooltip = {
+						click_type = left
+						click_mode = single
+						click_modifier = default
+						title = "Change Minimum Gold by #R -10#!"
+						on_action = "[GetScriptedGui('lsq_decrease_minimum_gold_for_buildings').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+					action_tooltip = {
+						click_type = left
+						click_mode = single
+						click_modifier = shift
+						title = "Change Minimum Gold by #R -100#!"
+						on_action = "[GetScriptedGui('lsq_decrease_minimum_gold_for_buildings_100').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+					action_tooltip = {
+						click_type = left
+						click_mode = single
+						click_modifier = ctrl
+						title = "Change Minimum Gold by #R -1000#!"
+						on_action = "[GetScriptedGui('lsq_decrease_minimum_gold_for_buildings_1000').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+				}
+				widget = {
+					min_width = 60
+					text_single = {
+						parentanchor = center
+						autoresize = yes
+						raw_text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('lsq_get_minimum_gold_for_buildings')|0]@gold!"
+					}
+				}
+				button_default = {
+					size = { 24 24 }
+					text_single = {
+						parentanchor = center
+						raw_text = "+"
+					}
+					tooltipwidget = { BasicFunctionalTooltip = { } }
+					action_tooltip = {
+						click_type = left
+						click_mode = single
+						click_modifier = default
+						title = "Change Minimum Gold by #G +10#!"
+						on_action = "[GetScriptedGui('lsq_increase_minimum_gold_for_buildings').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+					action_tooltip = {
+						click_type = left
+						click_mode = single
+						click_modifier = shift
+						title = "Change Minimum Gold by #G +100#!"
+						on_action = "[GetScriptedGui('lsq_increase_minimum_gold_for_buildings_100').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+					action_tooltip = {
+						click_type = left
+						click_mode = single
+						click_modifier = ctrl
+						title = "Change Minimum Gold by #G +1000#!"
+						on_action = "[GetScriptedGui('lsq_increase_minimum_gold_for_buildings_1000').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+				}
+				expand = {}
+			}
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				spacing = 5
+				tooltipwidget = {
+					ContextualTooltipType = {
+						blockoverride "title_text" {
+							raw_text = "Gold to save before auto-expanding RGOs"
+						}
+						blockoverride "tooltip_content" {
+							TooltipTextBlock = {
+								blockoverride "text" {
+									raw_text = "The gold to save is the amount of gold that must be available before any auto-expansion can occur. An RGO will not auto-expand if the gold to save plus the estimate cost of the next level is greater than the country's current ducats. Put another way, the amount of gold you will have will never drop below the gold to save value."
+								}
+							}
+						}
+					}
+				}
+				expand = {}
+				text_single = {
+					autoresize = yes
+					raw_text = "Gold to save before auto-expanding RGOs:"
+				}
+				button_default = {
+					size = { 24 24 }
+					text_single = {
+						parentanchor = center
+						raw_text = "-"
+					}
+					tooltipwidget = { BasicFunctionalTooltip = {} }
+					action_tooltip = {
+						click_type = left
+						click_mode = single
+						click_modifier = default
+						title = "Change Minimum Gold by #R -10#!"
+						on_action = "[GetScriptedGui('lsq_decrease_minimum_gold_for_rgos').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+					action_tooltip = {
+						click_type = left
+						click_mode = single
+						click_modifier = shift
+						title = "Change Minimum Gold by #R -100#!"
+						on_action = "[GetScriptedGui('lsq_decrease_minimum_gold_for_rgos_100').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+					action_tooltip = {
+						click_type = left
+						click_mode = single
+						click_modifier = ctrl
+						title = "Change Minimum Gold by #R -1000#!"
+						on_action = "[GetScriptedGui('lsq_decrease_minimum_gold_for_rgos_1000').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+				}
+				widget = {
+					min_width = 60
+					text_single = {
+						parentanchor = center
+						autoresize = yes
+						raw_text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('lsq_get_minimum_gold_for_rgos')|0]@gold!"
+					}
+				}
+				button_default = {
+					size = { 24 24 }
+					text_single = {
+						parentanchor = center
+						raw_text = "+"
+					}
+					tooltipwidget = { BasicFunctionalTooltip = { } }
+					action_tooltip = {
+						click_type = left
+						click_mode = single
+						click_modifier = default
+						title = "Change Minimum Gold by #G +10#!"
+						on_action = "[GetScriptedGui('lsq_increase_minimum_gold_for_rgos').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+					action_tooltip = {
+						click_type = left
+						click_mode = single
+						click_modifier = shift
+						title = "Change Minimum Gold by #G +100#!"
+						on_action = "[GetScriptedGui('lsq_increase_minimum_gold_for_rgos_100').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+					action_tooltip = {
+						click_type = left
+						click_mode = single
+						click_modifier = ctrl
+						title = "Change Minimum Gold by #G +1000#!"
+						on_action = "[GetScriptedGui('lsq_increase_minimum_gold_for_rgos_1000').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+				}
+				expand = {}
+			}
+			hbox = {
+				button_default = {
+					size = { 220 40 }
+					text_single = {
+						parentanchor = center
+						autoresize = yes
+						raw_text = "Update Province Cache"
+					}
+					tooltipwidget = {
+						ContextualTooltipType = {
+							blockoverride "title_text" {
+								raw_text = "Update Province Cache"
+							}
+							blockoverride "tooltip_content" {
+								TooltipTextBlock = {
+									blockoverride "text" {
+										raw_text = "Press this button to update the cache of which provinces have at least one location with auto-expand RGO on."
+									}
+
+									textbox = {
+										margin = { 10 10 }
+										using = tooltip_text_block_template
+										raw_text = "Click once if the game seems slower since the auto-expand RGO update or if the mod is auto-expanding an RGO before it's fully employed and it should hopefully fix it."
+									}
+
+									textbox = {
+										margin = { 10 10 }
+										using = tooltip_text_block_template
+										raw_text = "This should not be needed regularly."
+									}
+								}
+							}
+						}
+					}
+					onclick = "[GetScriptedGui('lsq_update_all_provinces_auto_expand_rgo_information').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+			}
+		}
+	}
+}

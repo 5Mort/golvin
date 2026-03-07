@@ -1,0 +1,52 @@
+TRY_REPLACE:hundred_years_war_wargoal = {
+	type = superiority
+	war_name = "HUNDRED_YEARS_WAR_NAME" #uses none
+	war_name_is_country_order_agnostic = yes
+	
+	attacker = {
+		conquer_cost = 1.0
+		subjugate_cost = 1.0
+		allowed_locations = {
+			custom_tooltip = {
+				text = casus_belli_forbids_non_french_location_conquest_tt
+				OR = {
+					scope:location.region = region:france_region
+					scope:location = {
+						owner ?= { is_subject_of = c:FRA }
+					}
+				}
+			}
+		}
+	}
+	defender = {
+		conquer_cost = 1.0
+		subjugate_cost = 1.0
+		allowed_locations = {
+			custom_tooltip = {
+				text = casus_belli_forbids_non_french_location_conquest_tt
+				OR = {
+					scope:location.region = region:france_region
+					scope:location = {
+						owner ?= { is_subject_of = c:FRA }
+					}
+				}
+			}
+		}
+	}
+	ticking_war_score = 0.5
+}
+
+CUST_hegemon_wargoal = {
+	type = superiority
+	
+	attacker = {
+		conquer_cost = 0.25
+		subjugate_cost = 0.25
+	}
+	
+	defender = {
+		conquer_cost = 0.25
+		subjugate_cost = 0.25
+	}
+	ticking_war_score = 0.5
+}

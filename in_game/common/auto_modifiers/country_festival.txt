@@ -1,0 +1,20 @@
+﻿TRY_REPLACE:low_legitimacy = {
+	potential_trigger = {
+		uses_government_power = legitimacy
+	}
+	limit = {
+		legitimacy < 50
+	}
+	scales_with = {
+		value = legitimacy
+		multiply = -0.01
+		add = 1
+	}
+
+	global_crown_estate_power = -0.5
+	global_max_control = -0.15
+
+	global_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+	monthly_righteousness = -0.25
+	monthly_doom = 0.25
+}

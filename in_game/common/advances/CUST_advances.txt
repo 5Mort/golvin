@@ -1,0 +1,64 @@
+﻿###TRADITIONS###
+
+TRY_REPLACE:french_tradition = {
+	age = age_1_traditions
+	potential = {
+		has_or_had_tag = FRA
+	}
+	diplomatic_reputation = diplomatic_reputation_mild_bonus
+	diplomatic_capacity = 0.5
+	
+	requires = feudalism_advance
+}
+
+
+
+###RENISSANCE###
+
+TRY_REPLACE:dock_advance = {
+	age = age_2_renaissance
+	
+	requires = merchants_and_trade
+	
+	hire_privateer_cost_modifier = 0.2
+	privateer_maintenance_cost_modifier = 0.5
+	
+	unlock_building = dock
+
+	ai_weight = {
+		if = {
+			limit = {
+				has_ports = yes
+			}
+			add = {
+				value = 200
+				multiply = num_of_ports
+				divide = num_locations
+			}
+		}
+	}
+	
+	ai_preference_tags = {
+		exploration
+	}
+}
+
+
+###REFORMATION###
+
+TRY_REPLLACE:letters_of_marque = {
+	age = age_4_reformation
+	requires = global_trade_routes_advance
+	
+	can_hire_privateers = yes
+	hire_privateer_cost_modifier = 0.5
+	privateer_maintenance_cost_modifier = 0.5
+}
+
+TRY_REPLLACE:sturdy_privateers = {
+	age = age_4_reformation
+	icon = letters_of_marque
+	requires = letters_of_marque
+	privateer_durability = 0.20
+	hire_privateer_cost_modifier = 0.5
+}

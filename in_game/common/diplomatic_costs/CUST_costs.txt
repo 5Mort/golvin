@@ -1,0 +1,5 @@
+﻿###FROM SCRIPT###
+TRY_REPLACE:steal_maps_cost = {
+	spy_network = 80
+}
+

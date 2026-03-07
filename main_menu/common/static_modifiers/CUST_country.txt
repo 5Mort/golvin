@@ -1,0 +1,23 @@
+TRY_REPLACE:receiving_scutage = {
+	game_data = {
+		category = country
+	}
+	subject_not_obligated_to_join_war = no
+	payment_to_overlord_modifier = 0.25
+}
+
+TRY_REPLACE:unsupported_diplomatic_capacity = {
+	game_data = {
+		category = country
+	}
+
+	# Reduce prestige a bit
+	monthly_prestige = -0.2
+	subject_loyalty = -50
+	antagonism_received_modifier = 0.4
+	global_crown_estate_power = -0.50
+
+	# This is important as it effectively puts a cap on how many relations you can have
+	# It can also be justified as saying your obligations become less credible the more of them you have
+	diplomatic_reputation = diplomatic_reputation_unsup_mod
+}

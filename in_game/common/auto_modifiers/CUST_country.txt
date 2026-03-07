@@ -1,0 +1,5 @@
+TRY_INJECT:country_base_values = {
+
+	monthly_war_exhaustion = 0.01
+	
+}

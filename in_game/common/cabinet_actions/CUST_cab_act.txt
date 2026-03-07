@@ -1,0 +1,35 @@
+﻿TRY_REPLACE:reduce_war_exhaustion = {
+	ability = dip
+
+	allow = {
+		war_exhaustion > 0
+	}
+
+	is_finished = {
+		war_exhaustion <= 0
+	}
+
+	country_modifier = {
+		monthly_war_exhaustion = -0.02
+	}
+}
+TRY_REPLACE:strengthen_government = {
+	ability = mil
+	
+	allow = {
+	}	
+
+	country_modifier = {
+		monthly_legitimacy = 0.01
+		monthly_republican_tradition = 0.01
+		monthly_devotion = 0.01
+		monthly_horde_unity = 0.01
+		monthly_tribal_cohesion = 0.01
+	}
+
+	progress = {
+		scope:actor = {
+			value = government_power
+		}
+	}
+}

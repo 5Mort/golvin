@@ -1,0 +1,160 @@
+TRY_REPLACE:influence_french_subject = {	#Influence French Subject
+	type = situation
+	show_message = no
+
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = influence_french_subject
+		months = 2
+	}
+
+	potential = {
+		scope:actor = { tag = ENG }
+	}
+
+	allow = {
+		c:FRA = {
+			any_subject = {
+				OR = {
+					is_subject_type = appanage
+					is_subject_type = vassal
+				}
+				NOT = { has_country_modifier = appanage_diplomatic_betrayal_modifier }
+			}
+		}
+		scope:actor = {
+			gold >= {
+				value = monthly_income_trade_and_tax
+				multiply = 1
+			}
+			NOT = { has_truce_with = c:FRA }
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = situation
+		interaction_source_list = {
+			situation:hundred_years_war = {
+				add_to_list = source
+			}
+		}
+		target_flag = recipient
+		name = "choose_situation"
+		column = {
+			data = name
+		}
+		visible = {
+			situation:hundred_years_war = this
+			situation_is_active = yes
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = country
+		interaction_source_list = {
+			c:FRA = {
+				every_subject = {
+					limit = { 
+						OR = {
+							is_subject_type = appanage
+							is_subject_type = vassal
+						}
+						NOR = { 
+							has_country_modifier = appanage_diplomatic_betrayal_modifier 
+							has_variable = recently_declined_backstab_variable
+						}
+					}
+					add_to_list = source
+				}
+			}
+		}
+		target_flag = target_subject
+		name = "choose_country"
+		column = { data = name }
+		column = { data = expected_army_size }
+		column = { data = expected_navy_size }
+	}
+
+	effect = {
+		if = {
+			limit = { exists = scope:target_subject }
+			scope:target_subject ?= { trigger_event_non_silently = hundred_years_war.209 }
+		}
+		else = { custom_tooltip = influence_french_subject_tt }
+		
+	}
+
+	ai_will_do = {
+		subtract = {
+			value = 25
+			desc = BASE_VALUE
+		}
+
+		add = {
+			value = "c:FRA.relative_strength(scope:actor)"
+			multiply = 100
+			desc = "France Strength towards England"
+		}
+
+		add = {
+			value = scope:actor.monthly_income_trade_and_tax
+			divide = 5
+			desc = "English Income"
+		}
+		
+		
+		if = {
+			limit = {
+				exists = scope:target_subject
+			}
+
+			add = {
+				value = "scope:target_subject.relative_strength(c:FRA)"
+				multiply = 1000
+				desc = "subject Strength towards France"
+			}
+			add = {
+				desc = "Distance to England"
+				scope:target_subject = {
+					value = "border_distance_to(scope:actor)"
+					multiply = -0.02
+				}
+			}
+
+			subtract = {
+				value = scope:target_subject.subject_loyalty
+				desc = "subject loyalty"
+			}
+
+			add = {
+				desc = "num of forts of subject"
+				value = scope:target_subject.num_forts
+				multiply = 10
+			}
+
+			add = {
+				if = {
+					limit = { 
+						scope:actor = { is_at_war_with = c:FRA }
+					}
+					value = {
+						add = "scope:target_subject.opinion(c:ENG)"
+						add = 200
+						subtract = "scope:target_subject.opinion(c:FRA)"
+					}
+				}
+				else = {
+					value = {
+						add = "scope:target_subject.opinion(c:ENG)"
+						subtract = "scope:target_subject.opinion(c:FRA)"
+					}
+				}
+
+				desc = "target subject ENG opinion minus FRA opinion"
+			}
+
+		}
+	}
+}
