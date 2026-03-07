@@ -144,7 +144,7 @@ template lsq_Building_Autoexpand_Tooltip {
 		}
 
 		blockoverride "title_text" {
-			raw_text = "Building Auto-Expand"
+			text = Building_Auto-Expand
 		}
 
 		blockoverride "concept_link" {
@@ -154,7 +154,7 @@ template lsq_Building_Autoexpand_Tooltip {
 		blockoverride "tooltip_content" {
 			TooltipListBase = {
 				blockoverride "block_title" {
-					raw_text = "Automatically constructs new building levels at end of month, if enough gold is available, when the following conditions are met:"
+					text = lqr_desq_1
 				}
 				TooltipListRowContent = {
 					lsq_tooltip_row = {
@@ -167,7 +167,7 @@ template lsq_Building_Autoexpand_Tooltip {
 							visible = "[GetScriptedGui('lsq_pause_auto_expand').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						}
 						blockoverride "row_text" {
-							raw_text = "Auto-expand is not paused"
+							text = Auto-expand_is_not_paused
 						}
 					}
 					lsq_tooltip_row = {
@@ -180,7 +180,7 @@ template lsq_Building_Autoexpand_Tooltip {
 							visible = "[Not(GetScriptedGui('lsq_is_building_profitable').IsShown(GuiScope.SetRoot(Building.MakeScope).End))]"
 						}
 						blockoverride "row_text" {
-							raw_text = "Building is profitable"
+							text = Building_is_profitable
 						}
 					}
 					lsq_tooltip_row = {
@@ -191,7 +191,7 @@ template lsq_Building_Autoexpand_Tooltip {
 							visible = "[Not(GetScriptedGui('lsq_is_building_open').IsShown(GuiScope.SetRoot(Building.MakeScope).End))]"
 						}
 						blockoverride "row_text" {
-							raw_text = "Building is open"
+							text = Building_is_open
 						}
 					}
 					lsq_tooltip_row = {
@@ -203,7 +203,7 @@ template lsq_Building_Autoexpand_Tooltip {
 							visible = "[Not(GetScriptedGui('lsq_is_building_fully_employed').IsShown(GuiScope.SetRoot(Building.MakeScope).End))]"
 						}
 						blockoverride "row_text" {
-							raw_text = "Building is fully employed"
+							text = Building_is_fully_employed
 						}
 					}
 					lsq_tooltip_row = {
@@ -214,7 +214,7 @@ template lsq_Building_Autoexpand_Tooltip {
 							visible = "[Not(GetScriptedGui('lsq_is_building_not_lacking_goods').IsShown(GuiScope.SetRoot(Building.MakeScope).End))]"
 						}
 						blockoverride "row_text" {
-							raw_text = "Building doesn't lack any goods"
+							text = Building_doesn't_lack_any_goods
 						}
 					}
 					lsq_tooltip_row = {
@@ -227,7 +227,7 @@ template lsq_Building_Autoexpand_Tooltip {
 							visible = "[Not(GetScriptedGui('lsq_is_location_pops_available').IsShown(GuiScope.SetRoot(Building.MakeScope).End))]"
 						}
 						blockoverride "row_text" {
-							raw_text = "Location has promoted pops of corresponding type available"
+							text = Location_has_promoted
 						}
 					}
 					lsq_tooltip_row = {
@@ -239,7 +239,7 @@ template lsq_Building_Autoexpand_Tooltip {
 							visible = "[Not(GetScriptedGui('lsq_is_location_under_building_limit').IsShown(GuiScope.SetRoot(Building.MakeScope).End))]"
 						}
 						blockoverride "row_text" {
-							raw_text = "Location has Supported Building Levels left"
+							text = Location_has_Supported
 						}
 					}
 					lsq_tooltip_row = {
@@ -251,7 +251,7 @@ template lsq_Building_Autoexpand_Tooltip {
 							visible = "[Not(GetScriptedGui('lsq_is_building_not_max_level_and_not_obsolete_or_is_building_type_upgradeable_and_can_be_upgraded_by_owner').IsShown(GuiScope.SetRoot(Building.MakeScope).End))]"
 						}
 						blockoverride "row_text" {
-							raw_text = "At least one of these:"
+							text = At_least
 						}
 					}
 					lsq_tooltip_row_one_indent = {
@@ -262,7 +262,7 @@ template lsq_Building_Autoexpand_Tooltip {
 							visible = "[Not(GetScriptedGui('lsq_is_building_not_max_level_already_and_not_obsolete').IsShown(GuiScope.SetRoot(Building.MakeScope).End))]"
 						}
 						blockoverride "row_text" {
-							raw_text = "All of these:"
+							text = All_of_these
 						}
 					}
 					lsq_tooltip_row_two_indent = {
@@ -274,7 +274,7 @@ template lsq_Building_Autoexpand_Tooltip {
 							visible = "[Not(GetScriptedGui('lsq_is_building_not_max_level_already').IsShown(GuiScope.SetRoot(Building.MakeScope).End))]"
 						}
 						blockoverride "row_text" {
-							raw_text = "Building is not max level already"
+							text = Building_is_not
 						}
 					}
 					lsq_tooltip_row_two_indent = {
@@ -286,7 +286,7 @@ template lsq_Building_Autoexpand_Tooltip {
 							visible = "[GetScriptedGui('lsq_is_building_obsolete').IsShown(GuiScope.SetRoot(Building.MakeScope).End)]"
 						}
 						blockoverride "row_text" {
-							raw_text = "Building does NOT have an upgrade available"
+							text = Building_does_NOT
 						}
 					}
 					lsq_tooltip_row_one_indent = {
@@ -299,7 +299,7 @@ template lsq_Building_Autoexpand_Tooltip {
 							visible = "[Not(GetScriptedGui('lsq_is_building_upgradeable_and_can_be_upgraded_by_owner_and_auto_expand_upgrade_is_on').IsShown(GuiScope.SetRoot(Building.MakeScope).End))]"
 						}
 						blockoverride "row_text" {
-							raw_text = "All of these:"
+							text = All_of_these
 						}
 					}
 					lsq_tooltip_row_two_indent = {
@@ -310,7 +310,7 @@ template lsq_Building_Autoexpand_Tooltip {
 							visible = "[Not(GetScriptedGui('lsq_is_building_upgradeable').IsShown(GuiScope.SetRoot(Building.MakeScope).End))]"
 						}
 						blockoverride "row_text" {
-							raw_text = "Building type is upgradeable"
+							text = Building_type_is
 						}
 					}
 					lsq_tooltip_row_two_indent = {
@@ -322,7 +322,7 @@ template lsq_Building_Autoexpand_Tooltip {
 							visible = "[Not(GetScriptedGui('lsq_building_can_be_upgraded_by_owner').IsShown(GuiScope.SetRoot(Building.MakeScope).End))]"
 						}
 						blockoverride "row_text" {
-							raw_text = "Building can be upgraded by owner"
+							text = Building_can_be
 						}
 					}
 					lsq_tooltip_row_two_indent = {
@@ -333,7 +333,7 @@ template lsq_Building_Autoexpand_Tooltip {
 							visible = "[Not(GetScriptedGui('lsq_should_auto_expand_upgrade_buildings').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 						}
 						blockoverride "row_text" {
-							raw_text = "Allow auto-expand to upgrade buildings"
+							text = Allow_auto-expand_to
 						}
 					}
 				}
@@ -342,7 +342,7 @@ template lsq_Building_Autoexpand_Tooltip {
 			TooltipTextBlock = {
 				visible = "[And(GetScriptedGui('lsq_is_auto_expand_active_for_building').IsShown(GuiScope.SetRoot(Building.MakeScope).End), GetScriptedGui('lsq_is_building_able_to_auto_expand').IsShown(GuiScope.SetRoot(Building.MakeScope).End))]"
 				blockoverride "text" {
-					raw_text = "Building will expand if at least [GuiScope.SetRoot(Building.MakeScope).ScriptValue('lsq_expected_gold_available_for_building')|0]@gold! is available"
+					text = "Building will expand if at least [GuiScope.SetRoot(Building.MakeScope).ScriptValue('lsq_expected_gold_available_for_building')|0]@gold! is available"
 				}
 				blockoverride "textblock_background_tint"  {
 					modify_texture = {
@@ -354,7 +354,7 @@ template lsq_Building_Autoexpand_Tooltip {
 			TooltipTextBlock = {
 				visible = "[And(GetScriptedGui('lsq_is_auto_expand_active_for_building').IsShown(GuiScope.SetRoot(Building.MakeScope).End), Not(GetScriptedGui('lsq_is_building_able_to_auto_expand').IsShown(GuiScope.SetRoot(Building.MakeScope).End)))]"
 				blockoverride "text" {
-					raw_text = "Building will not expand; conditions are not met"
+					text = Building_will_not
 				}
 				blockoverride "textblock_background_tint"  {
 					modify_texture = {
@@ -368,10 +368,10 @@ template lsq_Building_Autoexpand_Tooltip {
 			TooltipFunctionalBlock = {
 				using = tooltip_left_right_click_template
 				blockoverride "action_left_text" {
-					raw_text = "Toggle Auto-Expand"
+					text = Toggle_Auto-Expand
 				}
 				blockoverride "action_right_text" {
-					raw_text = "Open Settings"
+					text = Open_Settings
 				}
 			}
 		}

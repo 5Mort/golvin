@@ -24,7 +24,7 @@ basic_dialog = {
 					fontsize_min = 15
 					align = center|nobaseline
 					block "header_text" {
-						raw_text = "LSQ: Settings"
+						text = LSQ_Settings
 					}
 				}
 				expand = {}
@@ -94,7 +94,7 @@ basic_dialog = {
 					tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { raw_text = "If checked, auto-expand will not run anywhere. Use when you don't want auto-expand running but you don't want to have to disable and re-enable it." } } }
 				}
 				text_single = {
-					raw_text = "Pause auto-expand everywhere"
+					text = Pause_auto
 				}
 				expand = {}
 			}
@@ -109,7 +109,7 @@ basic_dialog = {
 					tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { raw_text = "If checked, auto-expand will upgrade buildings if they are obsolete." } } }
 				}
 				text_single = {
-					raw_text = "Auto-expand will upgrade buildings if they are obsolete"
+					text = Auto-expand_will_upgrade
 				}
 				expand = {}
 			}
@@ -120,12 +120,12 @@ basic_dialog = {
 				tooltipwidget = {
 					ContextualTooltipType = {
 						blockoverride "title_text" {
-							raw_text = "Gold to save before auto-expanding buildings"
+							text = Gold_to_save
 						}
 						blockoverride "tooltip_content" {
 							TooltipTextBlock = {
 								blockoverride "text" {
-									raw_text = "The gold to save is the amount of gold that must be available before any auto-expansion can occur. A building will not auto-expand if the gold to save plus the estimate cost of the next level is greater than the country's current ducats. Put another way, the amount of gold you will have will never drop below the gold to save value."
+									text = gold_desq
 								}
 							}
 						}
@@ -134,7 +134,7 @@ basic_dialog = {
 				expand = {}
 				text_single = {
 					autoresize = yes
-					raw_text = "Gold to save before auto-expanding buildings:"
+					text = Gold_to_save
 				}
 				button_default = {
 					size = { 24 24 }
@@ -210,12 +210,12 @@ basic_dialog = {
 				tooltipwidget = {
 					ContextualTooltipType = {
 						blockoverride "title_text" {
-							raw_text = "Gold to save before auto-expanding RGOs"
+							text = Gold_to_save_RGO
 						}
 						blockoverride "tooltip_content" {
 							TooltipTextBlock = {
 								blockoverride "text" {
-									raw_text = "The gold to save is the amount of gold that must be available before any auto-expansion can occur. An RGO will not auto-expand if the gold to save plus the estimate cost of the next level is greater than the country's current ducats. Put another way, the amount of gold you will have will never drop below the gold to save value."
+									text = gold_desq_RGO
 								}
 							}
 						}
@@ -224,7 +224,7 @@ basic_dialog = {
 				expand = {}
 				text_single = {
 					autoresize = yes
-					raw_text = "Gold to save before auto-expanding RGOs:"
+					text = Gold_to_save_RGO
 				}
 				button_default = {
 					size = { 24 24 }
@@ -300,29 +300,27 @@ basic_dialog = {
 					text_single = {
 						parentanchor = center
 						autoresize = yes
-						raw_text = "Update Province Cache"
+						text = Update_Province_Cache
 					}
 					tooltipwidget = {
 						ContextualTooltipType = {
 							blockoverride "title_text" {
-								raw_text = "Update Province Cache"
+								text = Update_Province_Cache
 							}
 							blockoverride "tooltip_content" {
 								TooltipTextBlock = {
 									blockoverride "text" {
-										raw_text = "Press this button to update the cache of which provinces have at least one location with auto-expand RGO on."
+										text = Update_Province_Cache_desq
 									}
-
 									textbox = {
 										margin = { 10 10 }
 										using = tooltip_text_block_template
-										raw_text = "Click once if the game seems slower since the auto-expand RGO update or if the mod is auto-expanding an RGO before it's fully employed and it should hopefully fix it."
+										text = Click_once
 									}
-
 									textbox = {
 										margin = { 10 10 }
 										using = tooltip_text_block_template
-										raw_text = "This should not be needed regularly."
+										text = This_should
 									}
 								}
 							}

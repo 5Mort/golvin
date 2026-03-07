@@ -57,7 +57,7 @@ template lsq_RGO_Autoexpand_Tooltip {
 		}
 
 		blockoverride "title_text" {
-			raw_text = "RGO Auto-Expand"
+			text = RGO_Auto-Expand
 		}
 
 		blockoverride "concept_link" {
@@ -67,7 +67,7 @@ template lsq_RGO_Autoexpand_Tooltip {
 		blockoverride "tooltip_content" {
 			TooltipListBase = {
 				blockoverride "block_title" {
-					raw_text = "Automatically constructs new RGO level at end of month, if enough gold is available, when the following conditions are met:"
+					text = lqr_desq_2
 				}
 				TooltipListRowContent = {
 					lsq_tooltip_row = {
@@ -80,7 +80,7 @@ template lsq_RGO_Autoexpand_Tooltip {
 							visible = "[GetScriptedGui('lsq_pause_auto_expand').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						}
 						blockoverride "row_text" {
-							raw_text = "Auto-expand is not paused"
+							text = Auto-expand_is_not_paused
 						}
 					}
 					lsq_tooltip_row = {
@@ -92,7 +92,7 @@ template lsq_RGO_Autoexpand_Tooltip {
 							visible = "[Not(GetScriptedGui('lsq_is_rgo_not_max_level_already').IsShown(GuiScope.SetRoot(Location.MakeScope).End))]"
 						}
 						blockoverride "row_text" {
-							raw_text = "RGO is not max level already"
+							text = RGO_is_not
 						}
 					}
 					lsq_tooltip_row = {
@@ -104,7 +104,7 @@ template lsq_RGO_Autoexpand_Tooltip {
 							visible = "[Not(GetScriptedGui('lsq_is_rgo_fully_employed').IsShown(GuiScope.SetRoot(Location.MakeScope).End))]"
 						}
 						blockoverride "row_text" {
-							raw_text = "RGO is fully employed or will be with one month of promotions"
+							text = RGO_is_fully
 						}
 					}
 					# lsq_tooltip_row = {
@@ -132,7 +132,7 @@ template lsq_RGO_Autoexpand_Tooltip {
 							visible = "[Not(GetScriptedGui('lsq_is_rgo_under_construction').IsShown(GuiScope.SetRoot(Location.MakeScope).End))]"
 						}
 						blockoverride "row_text" {
-							raw_text = "RGO isn't already under construction"
+							text = RGO_isn't_already
 						}
 					}
 					lsq_tooltip_row = {
@@ -147,7 +147,7 @@ template lsq_RGO_Autoexpand_Tooltip {
 							visible = "[Not(GetScriptedGui('lsq_is_there_enough_gold_available').IsShown(GuiScope.SetRoot(Location.MakeScope).End))]"
 						}
 						blockoverride "row_text" {
-							raw_text = "Country doesn't have enough gold available"
+							text = Country_doesn't_have
 						}
 					}
 				}
@@ -156,7 +156,7 @@ template lsq_RGO_Autoexpand_Tooltip {
 			TooltipTextBlock = {
 				visible = "[And(GetScriptedGui('lsq_set_auto_expand_for_rgo').IsShown(GuiScope.SetRoot(Location.MakeScope).End), GetScriptedGui('lsq_is_able_to_auto_expand_rgo').IsShown(GuiScope.SetRoot(Location.MakeScope).End))]"
 				blockoverride "text" {
-					raw_text = "RGO will expand if at least [GuiScope.SetRoot(Location.MakeScope).ScriptValue('lsq_expected_gold_available_for_rgo')|0]@gold! is available"
+					text = RGO_will_expand
 				}
 				blockoverride "textblock_background_tint"  {
 					modify_texture = {
@@ -168,7 +168,7 @@ template lsq_RGO_Autoexpand_Tooltip {
 			TooltipTextBlock = {
 				visible = "[And(GetScriptedGui('lsq_set_auto_expand_for_rgo').IsShown(GuiScope.SetRoot(Location.MakeScope).End), Not(GetScriptedGui('lsq_is_able_to_auto_expand_rgo').IsShown(GuiScope.SetRoot(Location.MakeScope).End)))]"
 				blockoverride "text" {
-					raw_text = "RGO will not expand; conditions are not met"
+					text = RGO_will_not_expand
 				}
 				blockoverride "textblock_background_tint"  {
 					modify_texture = {
@@ -229,10 +229,10 @@ template lsq_RGO_Autoexpand_Tooltip {
 			TooltipFunctionalBlock = {
 				using = tooltip_left_right_click_template
 				blockoverride "action_left_text" {
-					raw_text = "Toggle Auto-Expand"
+					text = Toggle_Auto-Expand
 				}
 				blockoverride "action_right_text" {
-					raw_text = "Open Settings"
+					text = Open_Settings
 				}
 			}
 		}
