@@ -19,5 +19,5 @@ TRY_REPLACE:unsupported_diplomatic_capacity = {
 
 	# This is important as it effectively puts a cap on how many relations you can have
 	# It can also be justified as saying your obligations become less credible the more of them you have
-	diplomatic_reputation = diplomatic_reputation_unsup_mod
+	diplomatic_reputation = -4
 }

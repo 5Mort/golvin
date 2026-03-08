@@ -1,0 +1,23 @@
+###MARITIME PRESENCE##########
+
+###GALLEY###
+cust_maritime_pesence_1 = 0.01
+cust_maritime_pesence_2 = 0.02
+cust_maritime_pesence_3 = 0.03
+cust_maritime_pesence_4 = 0.04
+cust_maritime_pesence_5 = 0.06
+cust_maritime_pesence_6 = 0.08
+cust_maritime_pesence_7 = 0.10
+cust_maritime_pesence_8 = 0.16
+cust_maritime_pesence_9 = 0.26
+cust_maritime_pesence_10 = 0.28
+############
+
+##############################
+
+
+###DIPLOMACY##################
+
+diplomatic_reputation_unsup_mod = -4
+
+##############################
